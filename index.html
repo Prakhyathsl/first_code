@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7e9;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #a8d5ba;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #factDisplay {
+            margin-top: 20px;
+            font-size: 1.2em;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <button id="factButton">Show Random Fact</button>
+        <p id="factDisplay"></p>
+        <button id="twitterButton">Share on Twitter</button>
+    </div>
+    <script>
+        const facts = [
+            "Crocodiles have been around for over 200 million years, making them one of the oldest living reptiles.",
+            "Crocodiles have one of the strongest bites in the animal kingdom, with a force of up to 3,700 pounds per square inch.",
+            "They are excellent ambush predators, often lying in wait for hours before striking at their prey with lightning speed.",
+            "Crocodiles can go through 4,000 teeth over a lifetime, as they continuously replace them.",
+            "As ectothermic animals, crocodiles rely on external heat sources to regulate their body temperature.",
+            "They can swim up to 20 miles per hour using their powerful tails.",
+            "Crocodiles are one of the few reptiles that can communicate vocally, using a variety of sounds to express different needs.",
+            "Unlike many reptiles, crocodile mothers are known for their parental care, often guarding their nests and helping hatchlings reach water.",
+            "While they primarily eat fish and mammals, crocodiles have been known to consume fruit, making them opportunistic feeders.",
+            "Crocodiles can live up to 70 years in the wild, with some species living even longer in captivity.",
+            "Some species, like the saltwater crocodile, have special glands that allow them to excrete excess salt, enabling them to live in saline environments.",
+            "Crocodiles are often seen basking in groups, which helps them regulate their body temperature and socialize.",
+            "They have a special transparent eyelid called a nictitating membrane that protects their eyes underwater.",
+            "Crocodiles have a four-chambered heart, similar to birds and mammals, which is unique among reptiles.",
+            "Crocodiles hold significant cultural importance in many societies, often symbolizing strength and power."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('factDisplay').textContent = facts[randomIndex];
+        });
+
+        document.getElementById('twitterButton').addEventListener('click', () => {
+            const fact = document.getElementById('factDisplay').textContent;
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(twitterUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
